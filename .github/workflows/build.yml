@@ -1,0 +1,25 @@
+name: Build C++ Solution
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Build Solution
+      run: msbuild RobloxQuickXecute.sln /p:Configuration=Release /p:Platform="x86"
+      # Not: Projenin mimarisine (x86 veya x64) ve sln dosyasının tam adı/konumuna göre burayı düzenleyebilirsin.
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: CompiledBinary
+        path: |
+          **/Release/*.exe
+          **/Release/*.dll
