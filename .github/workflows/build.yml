@@ -13,8 +13,7 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Build Solution
-      run: msbuild RobloxQuickXecute.sln /p:Configuration=Release /p:Platform="x86"
-      # Not: Projenin mimarisine (x86 veya x64) ve sln dosyasının tam adı/konumuna göre burayı düzenleyebilirsin.
+      run: msbuild QuickXecute.sln /p:Configuration=Release /p:Platform="x86"
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
